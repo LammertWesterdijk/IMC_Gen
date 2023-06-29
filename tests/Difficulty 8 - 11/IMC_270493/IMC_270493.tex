@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb, amsmath}
+\usepackage{enumerate, enumitem}
+\usepackage{pgf,tikz}
+\usepackage{subcaption}
+\usetikzlibrary{arrows}
+
+\usepackage[top=1.5cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+
+\newtheorem{opg}{Problem}
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+
+\newcommand{\opp}[1]{\text{\normalfont{op}}( \triangle #1)}
+
+
+\begin{document}
+
+\parbox{0.6\textwidth}{\center {\Huge Practice IMC} \\[2ex] {\Large Seed: 270493}}
+\parbox{0.4\textwidth}{\includegraphics[width=6cm]{logo.png}}
+
+\hrule
+
+\begin{opg}
+Find, with proof, the number of positive integers whose base-$n$ representation consists of distinct digits with the property that, except for the leftmost digit, every digit differs by $\pm 1$ from some digit further to the left.  (Your answer should be an explicit function of $n$ in simplest form.)
+
+
+\end{opg}
+\begin{opg}
+Let $F_m$ be the $m$th Fibonacci number, defined by $F_1 = F_2 = 1$ and $F_m = F_{m-1} + F_{m-2}$ for all $m \geq 3$.
+Let $p(x)$ be the polynomial of degree $1008$ such that $p(2n+1) = F_{2n+1}$ for $n=0,1,2,\dots,1008$. Find integers $j$ and $k$ such that $p(2019) = F_j - F_k$.
+
+\end{opg}
+\begin{opg}
+(András Gyárfás) Let $S$ be a set containing $n^2+n-1$ elements, for some positive integer $n$.  Suppose that the $n$-element subsets of $S$ are partitioned into two classes.  Prove that there are at least $n$ pairwise disjoint sets in the same class.
+
+
+\end{opg}
+\begin{opg}
+Determine the least real number $M$ such that the inequality \[\left| ab\left(a^{2}-b^{2}\right)+bc\left(b^{2}-c^{2}\right)+ca\left(c^{2}-a^{2}\right)\right|\leq M\left(a^{2}+b^{2}+c^{2}\right)^{2}\] holds for all real numbers $a,b$ and $c$
+
+
+\end{opg}
+\begin{opg}
+Let $S_n$ denote the set of all permutations of the numbers $1,2,\dots,n$.
+For $\pi \in S_n$, let $\sigma(\pi) = 1$ if $\pi$ is an even permutation
+and $\sigma(\pi) = -1$ if $\pi$ is an odd permutation.
+Also, let $\nu(\pi)$ denote the number of fixed points of $\pi$.
+Show that
+\[
+\sum_{\pi \in S_n} \frac{\sigma(\pi)}{\nu(\pi) + 1} = (-1)^{n+1}
+\frac{n}{n+1}.
+\]
+\end{opg}
+
+
+\end{document}

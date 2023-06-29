@@ -1,0 +1,70 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb, amsmath}
+\usepackage{enumerate, enumitem}
+\usepackage{pgf,tikz}
+\usepackage{subcaption}
+\usetikzlibrary{arrows}
+
+\usepackage[top=1.5cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+
+\newtheorem{opg}{Problem}
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+
+\newcommand{\opp}[1]{\text{\normalfont{op}}( \triangle #1)}
+
+
+\begin{document}
+
+\parbox{0.6\textwidth}{\center {\Huge Practice IMC} \\[2ex] {\Large Seed: 286573}}
+\parbox{0.4\textwidth}{\includegraphics[width=6cm]{logo.png}}
+
+\hrule
+
+\begin{opg}
+Let $k$ be the smallest positive integer for which there exist
+distinct integers $m_1, m_2, m_3, m_4, m_5$ such that the polynomial
+\[
+p(x) = (x-m_1)(x-m_2)(x-m_3)(x-m_4)(x-m_5)
+\]
+has exactly $k$ nonzero coefficients. Find, with proof, a set of
+integers $m_1, m_2, m_3, m_4, m_5$ for which this minimum $k$ is achieved.
+
+\end{opg}
+\begin{opg}
+(Zuming Feng) Determine all composite positive integers $n$ for which it is possible to arrange all divisors of $n$ that are greater than 1 in a circle so that no two adjacent divisors are relatively prime.
+
+
+\end{opg}
+\begin{opg}
+Let $\mathbb Q_{>0}$ be the set of all positive rational numbers. Let $f:\mathbb Q_{>0}\to\mathbb R$ be a function satisfying the following three conditions:
+
+(i) for all $x,y\in\mathbb Q_{>0}$, we have $f(x)f(y)\geq f(xy)$;
+(ii) for all $x,y\in\mathbb Q_{>0}$, we have $f(x+y)\geq f(x)+f(y)$;
+(iii) there exists a rational number $a>1$ such that $f(a)=a$.
+
+Prove that $f(x)=x$ for all $x\in\mathbb Q_{>0}$.
+
+
+\end{opg}
+\begin{opg}
+Let $F$ be the field of $p^2$ elements, where $p$ is an odd
+prime. Suppose $S$ is a set of $(p^2-1)/2$ distinct nonzero elements
+of $F$ with the property that for each $a\neq 0$ in $F$, exactly one
+of $a$ and $-a$ is in $S$. Let $N$ be the number of elements in the
+intersection $S \cap \{2a: a \in S\}$. Prove that $N$ is even.
+
+\end{opg}
+\begin{opg}
+Let $a_1,a_2,\ldots,a_n$ be distinct positive integers and let $M$ be a set of $n-1$ positive integers not containing $s=a_1+a_2+\ldots+a_n$. A grasshopper is to jump along the real axis, starting at the point $0$ and making $n$ jumps to the right with lengths $a_1,a_2,\ldots,a_n$ in some order. Prove that the order can be chosen in such a way that the grasshopper never lands on any point in $M$.
+
+Author: Dmitry Khramtsov, Russia
+
+
+\end{opg}
+
+
+\end{document}

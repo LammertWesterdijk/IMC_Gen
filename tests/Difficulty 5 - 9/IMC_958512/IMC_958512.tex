@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb, amsmath}
+\usepackage{enumerate, enumitem}
+\usepackage{pgf,tikz}
+\usepackage{subcaption}
+\usetikzlibrary{arrows}
+
+\usepackage[top=1.5cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+
+\newtheorem{opg}{Problem}
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+
+\newcommand{\opp}[1]{\text{\normalfont{op}}( \triangle #1)}
+
+
+\begin{document}
+
+\parbox{0.6\textwidth}{\center {\Huge Practice IMC} \\[2ex] {\Large Seed: 958512}}
+\parbox{0.4\textwidth}{\includegraphics[width=6cm]{logo.png}}
+
+\hrule
+
+\begin{opg}
+Let $a, b, x,$ and $y$ be real numbers with $a>4$ and $b>1$ such that\[\frac{x^2}{a^2}+\frac{y^2}{a^2-16}=\frac{(x-20)^2}{b^2-1}+\frac{(y-11)^2}{b^2}=1.\]Find the least possible value of $a+b.$
+
+
+\end{opg}
+\begin{opg}
+Is there an infinite sequence of real numbers $a_1, a_2, a_3, \dots$ such that
+\[
+a_1^m + a_2^m + a_3^m + \cdots = m
+\]
+for every positive integer $m$?
+
+\end{opg}
+\begin{opg}
+Show that, for any fixed integer $\,n \geq 1,\,$ the sequence
+\[2, \; 2^2, \; 2^{2^2}, \; 2^{2^{2^2}}, \ldots  \pmod{n}\]
+is eventually constant. 
+
+[The tower of exponents is defined by $a_1 = 2, \; a_{i+1} = 2^{a_i}$. Also $a_i \pmod{n}$ means the remainder which results from dividing $\,a_i\,$ by $\,n$.]
+
+
+\end{opg}
+\begin{opg}
+Let $P$ be a regular 2006-gon. A diagonal of $P$ is called good if its endpoints divide the boundary of $P$ into two parts, each composed of an odd number of sides of $P$. The sides of $P$ are also called good.
+Suppose $P$ has been dissected into triangles by 2003 diagonals, no two of which have a common point in the interior of $P$. Find the maximum number of isosceles triangles having two good sides that could appear in such a configuration.
+
+
+\end{opg}
+\begin{opg}
+Let $\mathbb{R}$ be the set of real numbers. Determine all functions $f$:$\mathbb{R}\rightarrow\mathbb{R}$ satisfying the equation
+
+$f(x+f(x+y))+f(xy) = x+f(x+y)+yf(x)$
+
+for all real numbers $x$ and $y$.
+
+Proposed by Dorlir Ahmeti, Albania
+
+
+\end{opg}
+
+
+\end{document}

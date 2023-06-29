@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb, amsmath}
+\usepackage{enumerate, enumitem}
+\usepackage{pgf,tikz}
+\usepackage{subcaption}
+\usetikzlibrary{arrows}
+
+\usepackage[top=1.5cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+
+\newtheorem{opg}{Problem}
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+
+\newcommand{\opp}[1]{\text{\normalfont{op}}( \triangle #1)}
+
+
+\begin{document}
+
+\parbox{0.6\textwidth}{\center {\Huge Practice IMC} \\[2ex] {\Large Seed: 283502}}
+\parbox{0.4\textwidth}{\includegraphics[width=6cm]{logo.png}}
+
+\hrule
+
+\begin{opg}
+Each vertex of a regular dodecagon ($12$-gon) is to be colored either red or blue, and thus there are $2^{12}$ possible colorings. Find the number of these colorings with the property that no four vertices colored the same color are the four vertices of a rectangle.
+
+
+\end{opg}
+\begin{opg}
+Let $S$ be the set of ordered pairs $(x, y)$ such that $0 < x \le 1, 0<y\le 1,$ and $\left[\log_2{\left(\frac 1x\right)}\right]$ and $\left[\log_5{\left(\frac 1y\right)}\right]$ are both even. Given that the area of the graph of $S$ is $m/n,$ where $m$ and $n$ are relatively prime positive integers, find $m+n.$ The notation $[z]$ denotes the greatest integer that is less than or equal to $z.$
+
+
+\end{opg}
+\begin{opg}
+Let $f$ be a three times differentiable function (defined on $\mathbb{R}$ and real-valued) such that $f$ has at least five distinct real zeros. Prove that $f + 6f' + 12f'' + 8f'''$ has at least two distinct real zeros.
+
+\end{opg}
+\begin{opg}
+Find the smallest positive integer $j$ such that for every polynomial $p(x)$ with integer coefficients and for every integer $k$, the integer
+\[
+p^{(j)}(k) = \left. \frac{d^j}{dx^j} p(x) \right|_{x=k} 
+\] 
+(the $j$-th derivative of $p(x)$ at $k$) is divisible by 2016.
+
+\end{opg}
+\begin{opg}
+let $H$ be the unit hemisphere $\{(x,y,z):x^2+y^2+z^2=1,z\geq 0\}$, $C$
+the unit circle $\{(x,y,0):x^2+y^2=1\}$, and $P$ the regular pentagon
+inscribed in $C$.  Determine the surface area of that portion of $H$ lying
+over the planar region inside $P$, and write your answer in the form
+$A \sin\alpha + B \cos\beta$, where $A,B,\alpha,\beta$ are real numbers.
+
+\end{opg}
+
+
+\end{document}

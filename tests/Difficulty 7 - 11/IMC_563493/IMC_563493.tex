@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb, amsmath}
+\usepackage{enumerate, enumitem}
+\usepackage{pgf,tikz}
+\usepackage{subcaption}
+\usetikzlibrary{arrows}
+
+\usepackage[top=1.5cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+
+\newtheorem{opg}{Problem}
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+
+\newcommand{\opp}[1]{\text{\normalfont{op}}( \triangle #1)}
+
+
+\begin{document}
+
+\parbox{0.6\textwidth}{\center {\Huge Practice IMC} \\[2ex] {\Large Seed: 563493}}
+\parbox{0.4\textwidth}{\includegraphics[width=6cm]{logo.png}}
+
+\hrule
+
+\begin{opg}
+Let $n > 0$ be an integer. We are given a balance and $n$ weights of weight $2^0,2^1, \cdots ,2^{n-1}$.  We are to place each of	the $n$ weights on the balance, one after another, in such a way that the right pan is never heavier than the left pan.  At each step we choose one of the weights that has not yet been placed on the balance, and place it on either the left pan or the right pan, until all of the weights have been placed.
+Determine the number of ways in which this can be done.
+
+
+\end{opg}
+\begin{opg}
+Find all differentiable functions $f:\mathbb{R} \to \mathbb{R}$ such that
+\[
+f'(x) = \frac{f(x+n)-f(x)}{n}
+\]
+for all real numbers $x$ and all positive integers $n$.
+
+\end{opg}
+\begin{opg}
+Given a finite set of points in the plane, each with integer coordinates, is it always possible to color the points red or white so that for any straight line $L$ parallel to one of the coordinate axes the difference (in absolute value) between the numbers of white and red points on $L$ is not greater than $1$?
+
+
+\end{opg}
+\begin{opg}
+Let $p$ be an odd prime number such that $p \equiv 2 \pmod{3}$. Define a permutation $\pi$ of the
+residue classes modulo $p$ by $\pi(x) \equiv x^3 \pmod{p}$. Show that $\pi$ is an even permutation
+if and only if $p \equiv 3 \pmod{4}$.
+
+\end{opg}
+\begin{opg}
+Let $\mathcal{A}$
+be a non-empty set of positive integers, and let $N(x)$ denote
+the number of elements of $\mathcal{A}$ not exceeding $x$.
+Let $\mathcal{B}$ denote the set
+of positive integers $b$ that can be written in the form $b = a - a'$ with
+$a \in \mathcal{A}$  and $a' \in  \mathcal{A}$. Let $b_1 < b_2 < \cdots$
+be the members of $\mathcal{B}$,
+listed in increasing order. Show that if the sequence $b_{i+1} - b_i$ is
+unbounded, then
+\[
+\lim_{x \to\infty}  N(x)/x  = 0.
+\]
+
+\end{opg}
+
+
+\end{document}

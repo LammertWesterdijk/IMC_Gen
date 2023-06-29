@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb, amsmath}
+\usepackage{enumerate, enumitem}
+\usepackage{pgf,tikz}
+\usepackage{subcaption}
+\usetikzlibrary{arrows}
+
+\usepackage[top=1.5cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+
+\newtheorem{opg}{Problem}
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+
+\newcommand{\opp}[1]{\text{\normalfont{op}}( \triangle #1)}
+
+
+\begin{document}
+
+\parbox{0.6\textwidth}{\center {\Huge Practice IMC} \\[2ex] {\Large Seed: 514641}}
+\parbox{0.4\textwidth}{\includegraphics[width=6cm]{logo.png}}
+
+\hrule
+
+\begin{opg}
+For each positive integer $n$, find the number of $n$-digit positive integers that satisfy both of the following conditions:
+
+$\bullet$ no two consecutive digits are equal, and
+
+$\bullet$ the last digit is a prime.
+
+
+\end{opg}
+\begin{opg}
+A $2 \times 3$ rectangle has vertices as $(0, 0), (2,0), (0,3),$ and $(2,
+3)$. It rotates $90^\circ$ clockwise about the point $(2, 0)$. It then
+rotates $90^\circ$ clockwise about the point $(5, 0)$, then $90^\circ$
+clockwise about the point $(7, 0)$, and finally, $90^\circ$ clockwise
+about the point $(10, 0)$. (The side originally on the $x$-axis is now
+back on the $x$-axis.) Find the area of the region above the $x$-axis and
+below the curve traced out by the point whose initial position is (1,1).
+
+\end{opg}
+\begin{opg}
+Find all functions $f: (0, \infty) \mapsto (0, \infty)$ (so $f$ is a function from the positive real numbers) such that
+
+
+
+$\frac {\left( f(w) \right)^2 + \left( f(x) \right)^2}{f(y^2) + f(z^2) } = \frac {w^2 + x^2}{y^2 + z^2}$
+
+
+
+for all positive real numbers $w,x,y,z,$ satisfying $wx = yz.$
+
+
+
+
+\end{opg}
+\begin{opg}
+Is it possible to choose $1983$ distinct positive integers, all less than or equal to $10^5$, no three of which are consecutive terms of an arithmetic progression? Justify your answer.
+
+
+\end{opg}
+\begin{opg}
+For each positive integer $n$, let $f(n)$ be the number of ways to
+make $n!$ cents using an unordered collection of coins, each worth $k!$
+cents for some $k$, $1 \leq k \leq n$. Prove that for some constant $C$,
+independent of $n$,
+\[
+n^{n^2/2 - Cn} e^{-n^2/4} \leq f(n) \leq n^{n^2/2 + Cn}e^{-n^2/4}.
+\]
+
+\end{opg}
+
+
+\end{document}

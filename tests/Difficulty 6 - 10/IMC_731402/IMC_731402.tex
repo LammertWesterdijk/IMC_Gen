@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb, amsmath}
+\usepackage{enumerate, enumitem}
+\usepackage{pgf,tikz}
+\usepackage{subcaption}
+\usetikzlibrary{arrows}
+
+\usepackage[top=1.5cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+
+\newtheorem{opg}{Problem}
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+
+\newcommand{\opp}[1]{\text{\normalfont{op}}( \triangle #1)}
+
+
+\begin{document}
+
+\parbox{0.6\textwidth}{\center {\Huge Practice IMC} \\[2ex] {\Large Seed: 731402}}
+\parbox{0.4\textwidth}{\includegraphics[width=6cm]{logo.png}}
+
+\hrule
+
+\begin{opg}
+Given a set $M$ of $1985$ distinct positive integers, none of which has a prime divisor greater than $23$, prove that $M$ contains a subset of $4$  elements whose product is the $4$th power of an integer.
+
+
+\end{opg}
+\begin{opg}
+If $P(x)$ denotes a polynomial of degree $n$ such that \[P(k)=\frac{k}{k+1}\] for $k=0,1,2,\ldots,n$, determine $P(n+1)$.
+
+
+\end{opg}
+\begin{opg}
+Let
+\[
+\vec{G}(x,y) = \left( \frac{-y}{x^2+4y^2}, \frac{x}{x^2+4y^2},0
+\right).
+\]
+Prove or disprove that there is a vector-valued function
+\[
+\vec{F}(x,y,z) = (M(x,y,z), N(x,y,z), P(x,y,z))
+\]
+with the following properties:
+\begin{enumerate}
+\item[(i)] $M,N,P$ have continuous partial derivatives for all
+$(x,y,z) \neq (0,0,0)$;
+\item[(ii)] $\mathrm{Curl}\,\vec{F} = \vec{0}$ for all $(x,y,z) \neq (0,0,0)$;
+\item[(iii)] $\vec{F}(x,y,0) = \vec{G}(x,y)$.
+\end{enumerate}
+
+\end{opg}
+\begin{opg}
+Each point in the plane is assigned a real number such that, for any triangle, the number at the center of its inscribed circle is equal to the arithmetic mean of the three numbers at its vertices. Prove that all points in the plane are assigned the same number.
+
+
+\end{opg}
+\begin{opg}
+Prove that there exists a constant $c>0$ such that in every
+nontrivial finite group $G$ there exists a sequence of length
+at most $c \log |G|$ with the property that each element of $G$
+equals the product of some subsequence. (The elements of $G$ in the
+sequence are not required to be distinct. A \emph{subsequence}
+of a sequence is obtained by selecting some of the terms,
+not necessarily consecutive, without reordering them; for
+example, $4, 4, 2$ is a subsequence of $2, 4, 6, 4, 2$, but
+$2, 2, 4$ is not.)
+
+\end{opg}
+
+
+\end{document}

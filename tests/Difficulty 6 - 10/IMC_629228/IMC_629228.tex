@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb, amsmath}
+\usepackage{enumerate, enumitem}
+\usepackage{pgf,tikz}
+\usepackage{subcaption}
+\usetikzlibrary{arrows}
+
+\usepackage[top=1.5cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+
+\newtheorem{opg}{Problem}
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+
+\newcommand{\opp}[1]{\text{\normalfont{op}}( \triangle #1)}
+
+
+\begin{document}
+
+\parbox{0.6\textwidth}{\center {\Huge Practice IMC} \\[2ex] {\Large Seed: 629228}}
+\parbox{0.4\textwidth}{\includegraphics[width=6cm]{logo.png}}
+
+\hrule
+
+\begin{opg}
+A triangle is called a parabolic triangle if its vertices lie on a
+parabola $y = x^2$. Prove that for every nonnegative integer $n$, there
+is an odd number $m$ and a parabolic triangle with vertices at three
+distinct points with integer coordinates with area $(2^nm)^2$.
+
+
+\end{opg}
+\begin{opg}
+A computer screen shows a $98 \times 98$ chessboard, colored in the usual way. One can select with a mouse any rectangle with sides on the lines of the chessboard and click the mouse button: as a result,  the colors in the selected rectangle switch (black becomes white, white becomes black). Find, with proof, the minimum number of mouse clicks needed to make the chessboard all one color.
+
+
+\end{opg}
+\begin{opg}
+(a) Prove that if the six dihedral (i.e. angles between pairs of faces) of a given tetrahedron are congruent, then the tetrahedron is regular.
+
+(b) Is a tetrahedron necessarily regular if five dihedral angles are congruent?
+
+
+\end{opg}
+\begin{opg}
+Determine all functions $f$ from the set of positive integers to the set of positive integers such that, for all positive integers $a$ and $b$, there exists a non-degenerate triangle with sides of lengths 
+
+
+ $a,f(b)$ and $f(b+f(a)-1)$. 
+
+(A triangle is non-degenerate if its vertices are not collinear.) 
+
+Author: Bruno Le Floch, France
+
+
+\end{opg}
+\begin{opg}
+For each positive integer $k$, let $A(k)$ be the number of odd divisors of $k$ in the interval $[1, \sqrt{2k})$. Evaluate
+\[
+\sum_{k=1}^\infty (-1)^{k-1} \frac{A(k)}{k}.
+\]
+
+\end{opg}
+
+
+\end{document}
