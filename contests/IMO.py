@@ -1,7 +1,7 @@
 from .generic_AOPS import *
 
 def random_problem(difficulty):
-    if difficulty < 6:
+    if difficulty < 6 or difficulty > 10:
         return None
     if difficulty > 9:
         year = random.randint(2000, 2022)

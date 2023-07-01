@@ -5,11 +5,11 @@ import random
 import subprocess
 import os
 import argparse
-from contests import USAMO, USAJMO, IMO, AIME, Putnam, BMO, CanadianMO, JBMO, USA_TST
+from contests import USAMO, USAJMO, IMO, AIME, Putnam, BMO, CanadianMO, JBMO, USA_TST, China_TST
 
 
 # Version support
-VERSION = 'v0.3.1'
+VERSION = 'v0.3.2'
 
 # IMC hates euclidean geometry
 def has_eucl(tex):
@@ -18,7 +18,7 @@ def has_eucl(tex):
 # TEST GENERATION
 def random_problem(difficulty):
     while True:
-        contest = random.randint(0, 9)
+        contest = random.randint(0, 10)
         if contest == 0:
             res = USAMO.random_problem(difficulty)
         elif contest == 1:
@@ -37,6 +37,8 @@ def random_problem(difficulty):
             res = JBMO.random_problem(difficulty)
         elif contest == 9:
             res = USA_TST.random_problem(difficulty)
+        elif contest == 10:
+            res = China_TST.random_problem(difficulty)
         if res != None and res[1] != None:
             return res
 
