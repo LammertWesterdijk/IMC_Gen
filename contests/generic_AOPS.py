@@ -133,15 +133,49 @@ def get_comm_contest(contest_id, year):
         pass
     return None
 
-def parse_comm(json, prob):
+# Selects problem 'prob' from a contest. 'prob_inx' indicates which matching problem to choose,
+# for instance if there are multiple days and problems are labeled 123123. 'mod' helps with other
+# irregularities, for instance if problems are labeled 123412 (over 3 days), mod 2 will change this
+# to 121212 for easy enumeration.
+def parse_comm(json, prob, prob_inx = 0, mod = 1000000):
+    curr_inx = 0
     try:
         for item in json['response']['category']['items']:
             try:
+                if len(item['item_text']) < 1:
+                    continue
                 prob_num = int(item['item_text'])
             except:
-                continue
-            if prob_num == prob:
-                return parse_BBCode(item['post_data']['post_canonical'])
+                try:
+                    if len(item['item_text']) < 2:
+                        continue
+                    prob_num = int(item['item_text'][1:]) # Perhaps like "P1" as with the Chinese TST
+                except:
+                    continue
+            if prob_num % mod == prob % mod:
+                if curr_inx == prob_inx:
+                    return parse_BBCode(item['post_data']['post_canonical'])
+                curr_inx += 1
     except:
         pass
     return None
+
+def count_probs(json):
+    curr_cnt = 0
+    try:
+        for item in json['response']['category']['items']:
+            try:
+                if len(item['item_text']) < 1:
+                    continue
+                prob_num = int(item['item_text'])
+            except:
+                try:
+                    if len(item['item_text']) < 2:
+                        continue
+                    prob_num = int(item['item_text'][1:]) # Perhaps like "P1" as with the Chinese TST
+                except:
+                    continue
+            curr_cnt += 1
+    except:
+        return 0
+    return curr_cnt

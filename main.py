@@ -5,11 +5,11 @@ import random
 import subprocess
 import os
 import argparse
-from contests import USAMO, USAJMO, IMO, AIME, Putnam, BMO, CanadianMO, JBMO
+from contests import USAMO, USAJMO, IMO, AIME, Putnam, BMO, CanadianMO, JBMO, USA_TST
 
 
 # Version support
-VERSION = 'v0.3'
+VERSION = 'v0.3.1'
 
 # IMC hates euclidean geometry
 def has_eucl(tex):
@@ -18,7 +18,7 @@ def has_eucl(tex):
 # TEST GENERATION
 def random_problem(difficulty):
     while True:
-        contest = random.randint(0, 8)
+        contest = random.randint(0, 9)
         if contest == 0:
             res = USAMO.random_problem(difficulty)
         elif contest == 1:
@@ -35,6 +35,8 @@ def random_problem(difficulty):
             res = CanadianMO.random_problem(difficulty)
         elif contest == 8:
             res = JBMO.random_problem(difficulty)
+        elif contest == 9:
+            res = USA_TST.random_problem(difficulty)
         if res != None and res[1] != None:
             return res
 
@@ -74,7 +76,7 @@ def generate_test(args):
         fw.write((template.replace('SEED', str(seed))).replace('PROBLEMS', problems))
         fl.write(log)
     subprocess.check_call('pdflatex -output-directory generated/IMC_{0}/ ./generated/IMC_{0}/IMC_{0}.tex'.format(contestid))
-    
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='IMC-Gen')
     parser.add_argument('-n','--num_prob', action="store", default = 5, dest='num_prob', help="number of problems in test", type = int)
