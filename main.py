@@ -9,6 +9,11 @@ import os
 def has_eucl(tex):
     return 'ABC' in tex
 
+# BBCode
+def parse_BBCode(bbcode):
+    # TODO parse BBCode to LaTeX
+    return bbcode
+
 # AOPS
 def request_page(page):
     parser = etree.HTMLParser()
@@ -171,6 +176,135 @@ def random_AIME_problem(difficulty):
             page = 'https://artofproblemsolving.com/wiki/index.php/{0}_AIME_II_Problems/Problem_{1}'.format(year, prob)
     return (page, get_problem(page))
 
+# AOPS COMMUNITY POSTS
+def extract_comm_id(res):
+    uid = None
+    for ln in res.text.split('\n'):
+        if 'AoPS.session' in ln:
+            inx = ln.find('\"id\":')
+            if inx < 0:
+                return None
+            inx += 4
+            uid = ""
+            inquotes = False
+            while inx < len(ln):
+                if ln[inx] == '\"' or ln[inx] == '\'':
+                    inquotes = not inquotes
+                    if not inquotes:
+                        break
+                elif inquotes:
+                    uid += ln[inx]
+                inx += 1
+    return uid
+
+def get_comm_contest(contest_id, year):
+    # Start up session
+    sesh = requests.Session()
+    headers = {'user-agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'} # spoof browser to prevent being blocked
+    res = sesh.get('https://artofproblemsolving.com/community/c{0}'.format(contest_id), headers = headers)
+    if res.status_code != 200:
+        return None
+    # Attempt to extract user id
+    uid = extract_comm_id(res)
+    if uid == None:
+        return None
+
+    # Extract contest id's for each year
+    data = {'category_id' : str(contest_id), 'a' : 'fetch_category_data', 'aops_session_id' : uid, 'aops_user_id' : '1', 'aops_logged_in' : 'false'}
+    res2 = sesh.post('https://artofproblemsolving.com/m/community/ajax.php', headers = headers, data = data)
+
+    # Return matching year
+    try:
+        for item in res2.json()['response']['category']['items']:
+            if int(item['item_score']) == year:
+                year_id = item['item_id']
+                data = {'category_id' : str(year_id), 'a' : 'fetch_category_data', 'aops_session_id' : uid, 'aops_user_id' : '1', 'aops_logged_in' : 'false'}
+                res3 = sesh.post('https://artofproblemsolving.com/m/community/ajax.php', headers = headers, data = data)
+                if res3.status_code != 200:
+                    return None
+                return res3.json()
+    except:
+        pass
+    return None
+
+def parse_comm(json, prob):
+    try:
+        for item in json['response']['category']['items']:
+            try:
+                prob_num = int(item['item_text'])
+            except:
+                continue
+            if prob_num == prob:
+                return parse_BBCode(item['post_data']['post_canonical'])
+    except:
+        pass
+    return None
+
+#BMO
+def random_BMO_problem(difficulty):
+    if difficulty < 5.5 or difficulty > 8.5:
+        return None
+    if difficulty > 8:
+        year = random.randint(2000, 2023)
+    else:
+        year = random.randint(1984, 2023)
+    scaled_difficulty = (2022 - year) / 100 + difficulty
+    if scaled_difficulty > 8:
+        prob = 4
+    elif scaled_difficulty > 7.5:
+        prob = 3
+    elif scaled_difficulty > 6.5:
+        prob = 2
+    else:
+        prob = 1
+    source = 'Balkan MO {0}, Problem {1}'.format(year, prob)
+    json = get_comm_contest(3225, year)
+    if json == None:
+        return None
+    return (source, parse_comm(json, prob))
+
+#Canadian MO
+def random_CanadianMO_problem(difficulty):
+    if difficulty < 4.5 or difficulty > 8.5:
+        return None
+    if difficulty > 7.5:
+        year = random.randint(2000, 2023)
+    else:
+        year = random.randint(1980, 2023)
+    scaled_difficulty = (2022 - year) / 100 + difficulty
+    if scaled_difficulty > 8:
+        prob = 5
+    elif scaled_difficulty > 7.5:
+        prob = 4
+    elif scaled_difficulty > 6.5:
+        prob = 3 + random.randint(0, 1)
+    elif scaled_difficulty > 6:
+        prob = 2 + random.randint(0, 1)
+    else:
+        prob = 1
+    source = 'Canadian MO {0}, Problem {1}'.format(year, prob)
+    json = get_comm_contest(3277, year)
+    if json == None:
+        return None
+    return (source, parse_comm(json, prob))
+
+#JBMO
+def random_JBMO_problem(difficulty):
+    if difficulty < 3.5 or difficulty > 7:
+        return None
+    year = random.randint(1998, 2023)
+    if difficulty > 6:
+        prob = 4
+    elif difficulty > 4.5:
+        prob = 2 + random.randint(0, 1)
+    else:
+        prob = 1
+    source = 'Junior Balkan MO {0}, Problem {1}'.format(year, prob)
+    json = get_comm_contest(3227, year)
+    if json == None:
+        return None
+    return (source, parse_comm(json, prob))
+
 # PUTNAM
 def request_putnam(year):
     headers = {'user-agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'} # spoof browser to prevent being blocked
@@ -230,9 +364,13 @@ def random_Putnam_problem(difficulty):
         return None
     return (source, parse_putnam(tex, prob))
 
+
+
+# TEST GENERATION
+
 def random_problem(difficulty):
     while True:
-        contest = random.randint(0, 7)
+        contest = random.randint(0, 10)
         if contest == 0:
             res = random_USAMO_problem(difficulty)
         elif contest == 1:
@@ -245,6 +383,12 @@ def random_problem(difficulty):
             res = random_AIME_problem(difficulty)
         elif contest == 6 or contest == 7:
             res = random_Putnam_problem(difficulty)
+        elif contest == 8:
+            res = random_BMO_problem(difficulty)
+        elif contest == 9:
+            res = random_CanadianMO_problem(difficulty)
+        elif contest == 10:
+            res = random_JBMO_problem(difficulty)
         if res != None and res[1] != None:
             return res
 
@@ -278,7 +422,7 @@ def generate_test(mindif, maxdif, n, seed):
     subprocess.check_call('pdflatex -output-directory tests/IMC_{0}/ ./tests/IMC_{0}/IMC_{0}.tex'.format(seed))
 
 def main():
-    generate_test(8, 11, 5, random.randint(0, 1000000))
+    generate_test(6, 10, 5, random.randint(0, 1000000))
     
 if __name__ == '__main__':
     main()
