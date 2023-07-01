@@ -4,6 +4,10 @@ import requests
 import random
 import subprocess
 import os
+import argparse
+
+# Version support
+VERSION = 'v0.2'
 
 # IMC hates euclidean geometry
 def has_eucl(tex):
@@ -410,20 +414,30 @@ def generate_problems(mindif, maxdif, n, seed):
         res += "\\end{opg}\n"
     return (log, res)
 
-def generate_test(mindif, maxdif, n, seed):
+def generate_contestid(args):
+    return '_'.join([str(args.seed), str(args.diff_lo), str(args.diff_hi), str(args.num_prob)]) + '({0})'.format(VERSION)
+
+def generate_test(args):
+    seed = args.seed
+    mindif = args.diff_lo
+    maxdif = args.diff_hi
+    n = args.num_prob
+    contestid = generate_contestid(args)
     random.seed(seed)
-    if not os.path.exists('./tests/IMC_{0}/'.format(seed)):
-        os.mkdir('./tests/IMC_{0}/'.format(seed))
-    with open('./tests/template.tex', 'r', encoding="utf-8") as t, open('./tests/IMC_{0}/IMC_{0}.tex'.format(seed), 'w', encoding="utf-8") as fw, open('./tests/IMC_{0}/IMC_{0}_Sources.txt'.format(seed), 'w', encoding="utf-8") as fl:
+    if not os.path.exists('./tests/IMC_{0}/'.format(contestid)):
+        os.mkdir('./tests/IMC_{0}/'.format(contestid))
+    with open('./tests/template.tex', 'r', encoding="utf-8") as t, open('./tests/IMC_{0}/IMC_{0}.tex'.format(contestid), 'w', encoding="utf-8") as fw, open('./tests/IMC_{0}/IMC_{0}_Sources.txt'.format(contestid), 'w', encoding="utf-8") as fl:
         template = t.read()
         log, problems = generate_problems(mindif, maxdif, n, seed)
         fw.write((template.replace('SEED', str(seed))).replace('PROBLEMS', problems))
         fl.write(log)
-    subprocess.check_call('pdflatex -output-directory tests/IMC_{0}/ ./tests/IMC_{0}/IMC_{0}.tex'.format(seed))
-
-def main():
-    generate_test(6, 10, 5, random.randint(0, 1000000))
+    subprocess.check_call('pdflatex -output-directory tests/IMC_{0}/ ./tests/IMC_{0}/IMC_{0}.tex'.format(contestid))
     
 if __name__ == '__main__':
-    main()
-    #pass
+    parser = argparse.ArgumentParser(description='IMC-Gen')
+    parser.add_argument('-n','--num_prob', action="store", default = 5, dest='num_prob', help="number of problems in test", type = int)
+    parser.add_argument('-dl','--diff_lo', action="store", default = 6, dest='diff_lo', help="minimum difficulty (first problem)", type = int)
+    parser.add_argument('-dh','--diff_hi', action="store", default = 10, dest='diff_hi', help="maximum difficulty (last problem)", type = int)
+    parser.add_argument('-s','--seed', action="store", default = random.randint(0, 1000000), dest='seed', help="random seed", type = int)
+    args = parser.parse_args()
+    generate_test(args)
